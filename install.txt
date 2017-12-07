@@ -1,0 +1,20 @@
+Building the Example
+
+1.You need a NodeJS development stack with npm and grunt installed to build the project.
+To install all project dependencies execute
+
+npm install
+
+2.
+Build the example using browserify via
+
+grunt
+
+You may also spawn a development setup by executing
+
+grunt auto-build
+
+Both tasks generate the distribution ready client-side modeler application into the dist folder.
+Serve the application locally or via a web server (nginx, apache, embedded).
+
+

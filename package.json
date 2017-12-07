@@ -1,0 +1,43 @@
+{
+  "name": "runbpm-modeler",
+  "version": "0.0.1",
+  "description": "runbpm-modeler based on bpmn.io",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liguo-zhang/runbpm-modeler"
+  },
+  "keywords": [
+    "runbpm modeler"
+  ],
+  "author": {
+    "name": "Li Guo Zhang",
+    "url": "https://github.com/liguo-zhang"
+  },
+  "contributors": [
+    {
+      "name": "contributors",
+      "url": "https://github.com/liguo-zhang"
+    }
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "brfs": "^1.2.0",
+    "grunt": "~0.4.4",
+    "grunt-browserify": "^4.0.1",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "~0.5.0",
+    "load-grunt-tasks": "~0.3.0"
+  },
+  "dependencies": {
+    "bpmn-js": "^0.14.0",
+    "runbpm-js-properties-panel": "file:../runbpm-js-properties-panel",
+    "runbpm-bpmn-moddle": "file:../runbpm-bpmn-moddle",
+    "diagram-js": "^0.14.0",
+    "jquery": "^2.1.1",
+    "lodash": "^3.0.0"
+  }
+}
