@@ -37,18 +37,9 @@ function openDiagram(xml) {
 
   bpmnModeler.importXML(xml, function(err) {
 
-    if (err) {
-      container
-        .removeClass('with-diagram')
-        .addClass('with-error');
-
-      container.find('.error pre').text(err.message);
-
+   
+    if(err){
       console.error(err);
-    } else {
-      container
-        .removeClass('with-error')
-        .addClass('with-diagram');
     }
 
 
@@ -114,6 +105,8 @@ if (!window.FileList || !window.FileReader) {
 // bootstrap diagram functions
 
 $(document).on('ready', function() {
+
+  createNewDiagram();
 
   $("#diagram_file").change(function(e){
      var file = e.target.files||e.dataTransfer.files;
