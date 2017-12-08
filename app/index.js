@@ -13,6 +13,9 @@ var container = $('#js-drop-zone');
 
 var canvas = $('#js-canvas');
 
+var downloadLink = $('#js-download-diagram');
+var downloadSvgLink = $('#js-download-svg');
+
 var bpmnModeler = new BpmnModeler({
   container: canvas,
   propertiesPanel: {
@@ -27,10 +30,48 @@ var bpmnModeler = new BpmnModeler({
   }
 });
 
+function HTMLEncode(html) {
+    var temp = document.createElement("div");
+    (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+    var output = temp.innerHTML;
+    temp = null;
+    return output;
+}
+
+function setEncoded(link, name, data) {
+    var encodedData = encodeURIComponent(data);
+
+    if (data) {
+      link.addClass('active').attr({
+        'href': 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData,
+        'download': name
+      });
+    } else {
+      link.removeClass('active');
+    }
+}
+
+function setSourceTab(xml){
+    saveSVG(function(err, svg) {
+        setEncoded(downloadSvgLink, 'runbpm_process_definition.svg', err ? null : svg);
+    });
+    
+    setEncoded(downloadLink, 'runbpm_process_definition.xml', xml);    
+
+  
+    $('#bpmn_tab_source').html("<pre class='prettyprint linenums' >"+HTMLEncode(xml)+"</pre>");
+    PR.prettyPrint();
+}
+
 var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
 
+
+
 function createNewDiagram() {
+
   openDiagram(newDiagramXML);
+  setSourceTab(newDiagramXML);
+
 }
 
 function openDiagram(xml) {
@@ -40,6 +81,8 @@ function openDiagram(xml) {
    
     if(err){
       console.error(err);
+    }else{
+      setSourceTab(xml);
     }
 
 
@@ -127,9 +170,7 @@ $(document).on('ready', function() {
     createNewDiagram();
   });
 
-  var downloadLink = $('#js-download-diagram');
-  var downloadSvgLink = $('#js-download-svg');
-
+  
   $('.buttons a').click(function(e) {
     if (!$(this).is('.active')) {
       e.preventDefault();
@@ -137,29 +178,12 @@ $(document).on('ready', function() {
     }
   });
 
-  function setEncoded(link, name, data) {
-    var encodedData = encodeURIComponent(data);
-
-    if (data) {
-      link.addClass('active').attr({
-        'href': 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData,
-        'download': name
-      });
-    } else {
-      link.removeClass('active');
-    }
-  }
-
+ 
   var debounce = require('lodash/function/debounce');
 
   var exportArtifacts = debounce(function() {
-
-    saveSVG(function(err, svg) {
-      setEncoded(downloadSvgLink, 'runbpm_process_definition.svg', err ? null : svg);
-    });
-
     saveDiagram(function(err, xml) {
-      setEncoded(downloadLink, 'runbpm_process_definition.xml', err ? null : xml);
+      setSourceTab(xml);
     });
   }, 500);
 

@@ -1,55 +1,94 @@
 <html>
 <head>
   <title>RunBPM设计器</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RunBPM工作台</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bootstrap/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bootstrap/ionicons.min.css">
+  <link rel="stylesheet" href="bootstrap/AdminLTE.min.css">
+  <link rel="stylesheet" href="bootstrap/skin-blue.min.css">
+  <link rel="stylesheet" href="bootstrap/prettify.css">
 
   <link rel="stylesheet" href="css/diagram-js.css" />
   <link rel="stylesheet" href="vendor/bpmn-font/css/bpmn-embedded.css" />
   <link rel="stylesheet" href="css/app.css" />
-  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 </head>
-<body>
 
-  
-  <div class="container-fluid modeler_header">
-        
-        <div class="row" >
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-           打开已有的流程定义 : <input type="file" id="diagram_file"/>
-          </div>
-          <div class="col-md-2" style="text-align:right">
-          </div>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div class="wrapper">
+
+      <div class="content-wrapper nopadding">
+                          
+              <section class="content">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#draw_tab">画板</a></li>
+                    <li><a data-toggle="tab" href="#bpmn_tab">XML源文件</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="draw_tab" class="tab-pane fade in active">
+                      <div class="content with-diagram nopadding" id="js-drop-zone" >
+                         <div class="row">
+                            <div class="col-xs-7 col-sm-6 col-lg-8 nopadding">
+                                  <div class="canvas" id="js-canvas"></div>
+                                </div>
+                                <div class="col-xs-5 col-sm-6 col-lg-4 nopadding">
+                                  <div id="js-properties-panel"></div>
+                                </div>
+                           </div>
+                          </div>
+                     </div>
+                      <div id="bpmn_tab" class="tab-pane fade">
+                        <div id="bpmn_tab_source"></div>
+                        <div>
+                         <ul class="buttons">
+                          <li>
+                            下载
+                          </li>
+                          <li>
+                            <a id="js-download-diagram" href title="download BPMN diagram">
+                              XML源文件
+                            </a>
+                          </li>
+                          <li>
+                            <a id="js-download-svg" href title="download as SVG image">
+                              SVG图片
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>   
+              </section>
+             
+            
         </div>
-    </div>
+</div>
 
-<div class="content-wrapper">
-      <div class="content with-diagram nopadding" id="js-drop-zone" >
-         <div class="row">
-            <div class="col-xs-7 col-sm-6 col-lg-8 nopadding">
-                  <div class="canvas" id="js-canvas"></div>
-                </div>
-                <div class="col-xs-5 col-sm-6 col-lg-4 nopadding">
-                  <div id="js-properties-panel"></div>
-                </div>
-           </div>
-          </div>
-  </div>
+<!-- jQuery 2.2.0 -->
+<script src="bootstrap/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="bootstrap/app.min.js"></script>
+<script src="bootstrap/prettify.js"></script>
+<script src="index.js"></script>
 
-  <ul class="buttons">
-    <li>
-      下载
-    </li>
-    <li>
-      <a id="js-download-diagram" href title="download BPMN diagram">
-        BPM流程定义文件
-      </a>
-    </li>
-    <li>
-      <a id="js-download-svg" href title="download as SVG image">
-        SVG图片
-      </a>
-    </li>
-  </ul>
+</body>
 
-  <script src="index.js"></script>
+<script>
+$(function () {
+  
+  PR.prettyPrint();
+  
+});
+</script>
 </html>

@@ -20,11 +20,12 @@ a:link {
 }
 
 .content {
-  position: relative;
+  
   width: 100%;
   height: 100%;
 
   > .message {
+    position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -34,13 +35,16 @@ a:link {
     color: #111;
 
     .note {
+      position: relative;
       vertical-align: middle;
       text-align: center;
       display: table-cell;
     }
 
     .error {
+      position: relative;
       .details {
+        position: relative;
         max-width: 500px;
         font-size: 12px;
         margin: 20px auto;
@@ -48,6 +52,7 @@ a:link {
       }
 
       pre {
+        position: relative;
         border: solid 1px #CCC;
         background: #EEE;
         padding: 10px;
@@ -57,30 +62,29 @@ a:link {
   &:not(.with-error) .error,
   &.with-error .intro,
   &.with-diagram .intro {
+    position: relative;
     display: none;
   }
 
-  .canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
+
 
   .canvas,
   &.with-error .canvas {
+    position: relative;
     visibility: hidden;
+    background:white;
   }
 
   &.with-diagram .canvas {
+    position: relative;
     visibility: visible;
+    background:white;
   }
 }
 
 
 .buttons {
-  position: fixed;
+  
   bottom: 20px;
   left: 20px;
 
@@ -109,24 +113,9 @@ a:link {
   }
 }
 
-#js-properties-panel {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 260px;
-  z-index: 10;
-  border-left: 1px solid #ccc;
-  overflow: auto;
-  &:empty {
-    display: none;
-  }
-  > .djs-properties-panel {
-    padding-bottom: 70px;
-    min-height:100%;
-  }
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }
-
-
 
 @import "runbpm-js-properties-panel/styles/properties";

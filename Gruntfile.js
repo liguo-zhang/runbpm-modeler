@@ -51,12 +51,14 @@ module.exports = function(grunt) {
           watch: true
         },
         files: {
-          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js' ]
+          //不连接bootstrap框架的js文件
+          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js', '!**/jQuery-2.2.0.min.js', '!**/bootstrap.min.js', '!**/app.min.js' ]
         }
       },
       app: {
         files: {
-          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js' ]
+          //不连接bootstrap框架的js文件
+          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js', '!**/jQuery-2.2.0.min.js', '!**/bootstrap.min.js', '!**/app.min.js' ]
         }
       }
     },
@@ -86,6 +88,16 @@ module.exports = function(grunt) {
             expand: true,
             cwd: '<%= config.sources %>/',
             src: ['**/*.*', '!**/*.js'],
+            dest: '<%= config.dist %>'
+          }
+        ]
+      },
+       bootstrap_js: {
+        files: [
+          {
+             expand: true,
+            cwd: '<%= config.sources %>/',
+            src: ['bootstrap/*.js' ],
             dest: '<%= config.dist %>'
           }
         ]
