@@ -33,7 +33,7 @@
     "load-grunt-tasks": "~0.3.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.14.0",
+    "bpmn-js": "file:../bpmn-js",
     "runbpm-js-properties-panel": "file:../runbpm-js-properties-panel",
     "runbpm-bpmn-moddle": "file:../runbpm-bpmn-moddle",
     "diagram-js": "^0.14.0",

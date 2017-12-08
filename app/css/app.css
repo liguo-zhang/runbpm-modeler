@@ -95,3 +95,13 @@ a:link {
 .buttons a.active {
   opacity: 1.0;
 }
+
+.djs-palette {
+     height: 450px;
+    width: 50px;
+}
+.djs-container {
+     background: white;
+}
+
+
