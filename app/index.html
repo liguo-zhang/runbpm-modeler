@@ -45,13 +45,20 @@
                     <li><a data-toggle="tab" href="#bpmn_tab">XML源文件</a></li>
 
                     <li class="pull-right">
-                        <div class="btn-group">
-                          <input type="file" class="btn btn-default" id="diagram_file" value="选择本地文件"/>
-                          <button type="button" class="btn  btn-default" style="display:none">选择已部署定义</button>
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <input type="file" id="diagram_file" style="width:200px" value="选择本地文件"/>
+                          </div>
+                          <div class="col-xs-6 btn-group">
+                              <a id="js-download-diagram" class="btn  btn-default" href title="download BPMN diagram">下载XML</a>
+                              <a id="js-download-svg" class="btn  btn-default" href title="download as SVG image">下载图片</a>
+                          </div>
                         </div>
                         
-                        <button type="button" class="btn btn-success">部署到流程引擎</button>
                         
+
+                        <button type="button" class="btn btn-success" style="display:none">部署到流程引擎</button>
+                        <button type="button" class="btn  btn-default" style="display:none">选择已部署定义</button>
                     </li>
                   </ul>
 
@@ -73,22 +80,8 @@
                       <div id="bpmn_tab" class="tab-pane fade">
                         <div id="bpmn_tab_source"></div>
                         <div>
-                         <ul class="buttons">
-                          <li>
-                            下载
-                          </li>
-                          <li>
-                            <a id="js-download-diagram" href title="download BPMN diagram">
-                              XML源文件
-                            </a>
-                          </li>
-                          <li>
-                            <a id="js-download-svg" href title="download as SVG image">
-                              SVG图片
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                         
+                        </div>
                     </div>
                   </div>   
               </section>
@@ -97,12 +90,11 @@
         </div>
 </div>
 
-<!-- jQuery 2.2.0 -->
+   
+
 <script src="bootstrap/jQuery-2.2.0.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
 <script src="bootstrap/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="bootstrap/app.min.js"></script>
+
 <script src="bootstrap/prettify.js"></script>
 <script src="index.js"></script>
 

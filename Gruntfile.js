@@ -52,13 +52,13 @@ module.exports = function(grunt) {
         },
         files: {
           //不连接bootstrap框架的js文件
-          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js', '!**/jQuery-2.2.0.min.js', '!**/bootstrap.min.js', '!**/app.min.js' ]
+          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js', '!bootstrap/*.js' ]
         }
       },
       app: {
         files: {
           //不连接bootstrap框架的js文件
-          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js', '!**/jQuery-2.2.0.min.js', '!**/bootstrap.min.js', '!**/app.min.js' ]
+          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js', '!bootstrap/*.js' ]
         }
       }
     },

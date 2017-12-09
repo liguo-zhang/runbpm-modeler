@@ -34,10 +34,10 @@
   },
   "dependencies": {
     "bpmn-js": "file:../bpmn-js",
-    "runbpm-js-properties-panel": "file:../runbpm-js-properties-panel",
-    "runbpm-bpmn-moddle": "file:../runbpm-bpmn-moddle",
     "diagram-js": "^0.14.0",
     "jquery": "^2.1.1",
-    "lodash": "^3.0.0"
+    "lodash": "^3.0.0",
+    "runbpm-bpmn-moddle": "file:../runbpm-bpmn-moddle",
+    "runbpm-js-properties-panel": "file:../runbpm-js-properties-panel"
   }
 }

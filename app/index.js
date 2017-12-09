@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var $ = require('jquery'),
     BpmnModeler = require('bpmn-js/lib/Modeler');
-
+    
 var propertiesPanelModule = require('runbpm-js-properties-panel'),
     propertiesProviderModule = require('runbpm-js-properties-panel/lib/provider/runbpm'),
     runbpmModdleDescriptor = require('runbpm-bpmn-moddle/resources/runbpm');
@@ -58,9 +58,6 @@ function setEncoded(link, name, data) {
 
 function setSourceTab(xml){
     saveSVG(function(err, svg) {
-        console.log("---");
-        console.log(svg);
-        console.log("---");
         setEncoded(downloadSvgLink, 'runbpm_process_definition.svg', err ? null : svg);
     });
     
@@ -87,6 +84,8 @@ function openDiagram(xml) {
    
     if(err){
       console.error(err);
+      
+      alert("导入流程时出错，请检查文件是否合法:\n"+err);
     }else{
       setSourceTab(xml);
       setSourceTab(newDiagramXML);
