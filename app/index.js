@@ -16,6 +16,10 @@ var canvas = $('#js-canvas');
 var downloadLink = $('#js-download-diagram');
 var downloadSvgLink = $('#js-download-svg');
 
+var customTranslate = {
+  translate: [ 'value', require('./customTranslate/customTranslate') ]
+};
+
 var bpmnModeler = new BpmnModeler({
   container: canvas,
   propertiesPanel: {
@@ -23,7 +27,8 @@ var bpmnModeler = new BpmnModeler({
   },
   additionalModules: [
     propertiesPanelModule,
-    propertiesProviderModule
+    propertiesProviderModule,
+    customTranslate
   ],
   moddleExtensions: {
     runbpm: runbpmModdleDescriptor
@@ -53,6 +58,9 @@ function setEncoded(link, name, data) {
 
 function setSourceTab(xml){
     saveSVG(function(err, svg) {
+        console.log("---");
+        console.log(svg);
+        console.log("---");
         setEncoded(downloadSvgLink, 'runbpm_process_definition.svg', err ? null : svg);
     });
     
@@ -70,21 +78,19 @@ var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn',
 function createNewDiagram() {
 
   openDiagram(newDiagramXML);
-  setSourceTab(newDiagramXML);
 
 }
 
 function openDiagram(xml) {
 
   bpmnModeler.importXML(xml, function(err) {
-
    
     if(err){
       console.error(err);
     }else{
       setSourceTab(xml);
+      setSourceTab(newDiagramXML);
     }
-
 
   });
 }

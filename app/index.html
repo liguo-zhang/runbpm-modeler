@@ -20,6 +20,17 @@
   <link rel="stylesheet" href="css/diagram-js.css" />
   <link rel="stylesheet" href="vendor/bpmn-font/css/bpmn-embedded.css" />
   <link rel="stylesheet" href="css/app.css" />
+    <style>
+      pre{
+          border-top:0 solid;
+          background-color:white;
+      }
+        pre.prettyprint{
+        width: auto;
+        overflow: auto;
+        max-height: 500px
+      }
+  </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -32,7 +43,20 @@
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#draw_tab">画板</a></li>
                     <li><a data-toggle="tab" href="#bpmn_tab">XML源文件</a></li>
+
+                    <li class="pull-right">
+                        <div class="btn-group">
+                          <input type="file" class="btn btn-default" id="diagram_file" value="选择本地文件"/>
+                          <button type="button" class="btn  btn-default" style="display:none">选择已部署定义</button>
+                        </div>
+                        
+                        <button type="button" class="btn btn-success">部署到流程引擎</button>
+                        
+                    </li>
                   </ul>
+
+
+
                   <div class="tab-content">
                     <div id="draw_tab" class="tab-pane fade in active">
                       <div class="content with-diagram nopadding" id="js-drop-zone" >
@@ -87,7 +111,6 @@
 <script>
 $(function () {
   
-  PR.prettyPrint();
   
 });
 </script>
