@@ -83,12 +83,11 @@ function openDiagram(xml) {
   bpmnModeler.importXML(xml, function(err) {
    
     if(err){
-      console.error(err);
+      console.log(err);
       
       alert("导入流程时出错，请检查文件是否合法:\n"+err);
     }else{
       setSourceTab(xml);
-      setSourceTab(newDiagramXML);
     }
 
   });
@@ -173,6 +172,49 @@ $(document).on('ready', function() {
     e.preventDefault();
 
     createNewDiagram();
+  });
+
+  $("button[id^='choose_process']").each(function(i){
+     $(this).on('click',function (e) {
+          
+        var modelIdValue = $(this).attr('modelId');
+        var url = "getProcessModelContext.jsp?isChoose=1&processModelId="+modelIdValue;
+        
+        $.ajax({
+            type : "POST",
+            url : url,
+            datatype : "application/xml",
+            success : function(data) {
+                var xmlstr = data.xml ? data.xml : (new XMLSerializer()).serializeToString(data);
+                openDiagram(xmlstr);
+                choose_process_back();
+                
+            },
+            error : function(error) {
+                console.log(error);
+            },
+        });
+     });
+  });
+
+  
+  $('#deployProcessDefinition').click(function(e) {
+      saveDiagram(function(err, xml) {
+        var url = "ajaxSubmitHandler.jsp"; 
+        var data = {"isDeployProcessDefinition":"1","deployXmlContent":xml}
+        $.ajax({
+           type: "POST",
+           url: url,
+           data: data, // serializes the form's elements.
+           success: function(data)
+           {
+               deployProcessDefinition_back(data);
+           }
+         });
+
+          e.preventDefault(); // avoid to execute the actual submit of the form.
+      });
+
   });
 
   
